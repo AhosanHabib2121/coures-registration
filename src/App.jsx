@@ -1,4 +1,5 @@
 import './App.css'
+import Cards from './components/cards/Cards'
 
 function App() {
 
@@ -6,7 +7,11 @@ function App() {
     <>
       {/* header section */}
       <div>
-        <h1 className='text-center my-12 header_title_style '>Course Registration</h1>
+        <h1 className='text-center py-12 font-bold text-3xl '>Course Registration</h1>
+      </div>
+      {/* Cards area here */}
+      <div className='mx-14'>
+        <Cards></Cards>
       </div>
     </>
   )
