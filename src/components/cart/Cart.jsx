@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
-const Cart = ({ selectData,totalCredit,remainingCredit }) => {
-    let count = 1;
+const Cart = ({ selectData, totalCredit, remainingCredit }) => {
+    
   return (
     <div>
         <div className=" bg-white px-6 py-6 rounded-xl">
@@ -12,7 +12,7 @@ const Cart = ({ selectData,totalCredit,remainingCredit }) => {
                   <div>
                       <ol className="space-y-2">
                         {
-                              selectData.map(data => <li className="text-[#181717c9] font-normal text-sm" key={data.id}>{ count++}  {data.course_name }</li>)
+                              selectData.map((data, idx) => <li className="text-[#181717c9] font-normal text-sm" key={data.id}>{ idx+1}  {data.course_name }</li>)
                         }
                       </ol>
                 </div>
