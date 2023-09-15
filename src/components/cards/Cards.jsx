@@ -9,6 +9,10 @@ const Cards = () => {
 
     //useSete form select btn click data here
     const [selectData, setSelectData] = useState([]);
+    //totalCredit
+    const [totalCredit, setTotalCredit] = useState(0);
+    // remaining credit
+    const [remainingCredit, setRemainingCredit] = useState(0);
 
     // useEffect use for get json data
     useEffect(() => {
@@ -20,6 +24,8 @@ const Cards = () => {
     // select btn handle function here
     const handleSelect = (cardData) => {
         const isExist = selectData.find(item => item.id === cardData.id);
+        let creditHour = cardData.credit;
+
         if (isExist) {
             Swal.fire({
                 icon: 'error',
@@ -27,8 +33,23 @@ const Cards = () => {
                 text: 'Please try another card click.',
             })
         } else {
-            const selectDataStor = [...selectData, cardData];
-            setSelectData(selectDataStor);
+            selectData.forEach(dataSingle => {
+                creditHour = creditHour + dataSingle.credit;
+            })
+            const remainingHour = 20 - creditHour;
+            if (creditHour > 20) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Credit is end',
+                })
+            }
+            else {
+                setTotalCredit(creditHour);
+                setRemainingCredit(remainingHour);
+                const selectDataStor = [...selectData, cardData];
+                setSelectData(selectDataStor);
+            }
+                
         }
     }
     return (
@@ -47,7 +68,12 @@ const Cards = () => {
 
                 {/* cart area */}
                 <div className="w-3/12">
-                    <Cart selectData={selectData}></Cart>   
+                    <Cart
+                        selectData={selectData}
+                        totalCredit={totalCredit}
+                        remainingCredit={remainingCredit}
+                    >
+                    </Cart>   
                 </div>
             </div>
         </>
