@@ -12,7 +12,7 @@ const Cards = () => {
     //totalCredit
     const [totalCredit, setTotalCredit] = useState(0);
     // remaining credit
-    const [remainingCredit, setRemainingCredit] = useState(0);
+    const [remainingCredit, setRemainingCredit] = useState(20);
 
     // useEffect use for get json data
     useEffect(() => {
