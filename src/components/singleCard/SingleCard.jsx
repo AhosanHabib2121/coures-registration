@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { FiDollarSign } from 'react-icons/fi'
 import { HiOutlineBookOpen } from 'react-icons/hi'
 
-const SingleCard = ({ cardData }) => {
+const SingleCard = ({ cardData,handleSelect }) => {
   const { image, course_name, details, price, credit } = cardData
   return (
     <div>
@@ -33,7 +33,8 @@ const SingleCard = ({ cardData }) => {
           </div>
 
           <div className="mt-4 mb-2">
-            <button className="btn hover:bg-[#1866cc] bg-[#2F80ED] text-white w-full normal-case text-base font-semibold">
+            <button className="btn hover:bg-[#1866cc] bg-[#2F80ED] text-white w-full normal-case text-base font-semibold" 
+            onClick={()=> handleSelect(cardData)}>
               Select
             </button>
           </div>
@@ -43,6 +44,7 @@ const SingleCard = ({ cardData }) => {
   )
 }
 SingleCard.propTypes = {
-  cardData: PropTypes.object.isRequired,
+    cardData: PropTypes.object.isRequired,
+    handleSelect:PropTypes.func
 }
 export default SingleCard
